@@ -49,3 +49,39 @@ if discount_percentage >= 20:
     print(f"The final price after applying the discount is: ${final_price:.2f}")
 else:
     print(f"No discount applied. The price remains: ${final_price:.2f}")
+
+
+# file_handling
+def read_and_modify_file():
+    try:
+        # Ask the user for the filename
+        file_path = input("Enter the filename to read: ")
+
+        # Read the content of the file
+        with open(file_path, 'r') as file:
+            content = file.read()
+
+        # Print the content
+        print("\nFile Content:")
+        print(content)
+
+        # Modify the content (example: convert to uppercase)
+        modified_content = content.upper()
+
+        # Write modified content to a new file
+        new_file_path = "modified_" + file_path
+        with open(new_file_path, 'w') as new_file:
+            new_file.write(modified_content)
+
+        print(f"\nModified content written to {new_file_path}")
+
+    except FileNotFoundError:
+        print(f"❌ The file '{file_path}' was not found.")
+    except PermissionError:
+        print(f"⚠️ Permission denied while accessing '{file_path}'.")
+    except Exception as e:
+        print(f"⚡ An unexpected error occurred: {e}")
+
+
+# Run the function
+read_and_modify_file()
